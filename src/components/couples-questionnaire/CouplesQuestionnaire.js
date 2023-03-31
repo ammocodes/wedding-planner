@@ -19,12 +19,12 @@ const CouplesQuestionnaire = () => {
   },[finalPoint])
 
 
-  const fetchMe = () => {
+  const fetchMe = (results) => {
 
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '0b7fd3dc1emshdd7a36216956795p1969d1jsn1b11d19810f2',
+      'X-RapidAPI-Key': '6817ac6575mshbf20e33bdd895d5p18213ejsnf66db56b5f76',
       'X-RapidAPI-Host': 'local-business-data.p.rapidapi.com'
     }
   };
@@ -32,8 +32,8 @@ const CouplesQuestionnaire = () => {
   fetch(`https://local-business-data.p.rapidapi.com/search?query=Wedding%20Venues%20in%20${endPoint}limit=6&lat=37.359428&lng=-121.925337&zoom=13&language=en&region=uk`, options)
     .then(response => response.json())
     .then(response => console.log(response))
-    .then(data => {
-      setContainer(data)
+    .then(object => {
+      setContainer(object)
     })
     .catch(err => console.error(err));
   }
@@ -65,6 +65,7 @@ const CouplesQuestionnaire = () => {
         <input type="date" className="questionnaire-input" placeholder="Wedding Date" />
         <button className="submit-button" type="submit">Submit</button>
       </form>
+
       {container?.map((item) => {
         return (
           <div>
